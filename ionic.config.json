@@ -1,0 +1,7 @@
+{
+  "name": "project-bud",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
