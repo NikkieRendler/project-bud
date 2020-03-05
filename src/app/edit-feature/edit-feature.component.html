@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Edit Feature
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Edit Feature</ion-title>
+      <ion-buttons slot="end">
+        <ion-back-button (click)="closeModal()"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-input [(ngModel)]="featureName" clearInput placeholder="Feature Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="devHours" clearInput placeholder="Hours to develop"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Projects</ion-label>
+    <ion-select (ionChange)="handleSelection($event)" multiple="true" cancelText="Cancel" okText="Apply">
+      <ion-select-option *ngFor="let project of projectsService.projectList" value="{{project.name}}">{{project.name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button (click)="editFeature()" expand="full" color="primary">Edit Feature</ion-button>
+
+</ion-content>

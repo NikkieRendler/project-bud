@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Add Project
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Add Project</ion-title>
+      <ion-buttons slot="end">
+        <ion-back-button (click)="closeModal()"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-input [(ngModel)]="projectName" clearInput placeholder="Project Name"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="createProject()" expand="full" color="primary">Add Project</ion-button>
+
+</ion-content>

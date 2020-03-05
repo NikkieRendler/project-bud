@@ -1,0 +1,96 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Edit Project
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Edit Project</ion-title>
+      <ion-buttons slot="end">
+        <ion-back-button (click)="closeModal()"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item-divider>
+    <ion-label>
+      Project Name
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    {{projectName}}
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+      Total Cost
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    {{totalCost.toFixed()}}
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+      Time to develop
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    Insane (6 hours a day): {{(totalHours / 6).toFixed() + ' days'}} <br>
+  </ion-item>
+  <ion-item>
+    Optimistic (4 hours a day): {{(totalHours / 4).toFixed() + ' days'}} <br>
+  </ion-item>
+  <ion-item>
+    Realistic (2 hours a day): {{(totalHours / 2).toFixed() + ' days'}}
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>
+      Project Features
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item-sliding *ngFor="let feature of project.features">
+    <ion-item>
+      <ion-label style="display: flex; justify-content: space-between;">
+        <span>{{feature.name}}</span>
+        <span>{{feature.devHours}} hours</span>
+      </ion-label>
+    </ion-item>
+    <ion-item-options>
+      <ion-item-option (click)="removeFeatureFromProject(feature.name)">Remove</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+
+  <ion-item-divider>
+    <ion-label>
+      Project Management
+    </ion-label>
+  </ion-item-divider>
+
+  <ion-item style="margin-bottom: 50px;">
+    <ion-label>Add Features</ion-label>
+    <ion-select (ionChange)="addFeature($event)" multiple="true" cancelText="Cancel" okText="Add">
+      <ion-select-option *ngFor="let feature of projectsService.featuresList" value="{{feature.name}}">{{feature.name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- <ion-button (click)="editProject()" expand="full" color="primary">Add Features</ion-button> -->
+
+</ion-content>
