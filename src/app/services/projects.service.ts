@@ -94,6 +94,12 @@ export class ProjectsService {
     });
   }
 
+  editFeature(devHours: number, projectsNames: string[], featuresNames: string[]) {
+    const featureToEdit = this.featuresList.find(feature => feature.name === featuresNames[0]);
+    featureToEdit.devHours = devHours;
+    this.addFeaturesToProjects(projectsNames, featuresNames);
+  }
+
   deleteFeature(featureName) {
     const position = this.featuresList.findIndex(feature => feature.name === featureName);
     this.featuresList.splice(position, 1);

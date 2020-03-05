@@ -33,7 +33,8 @@ export class EditFeatureComponent implements OnInit {
   }
 
   async editFeature() {
-    this.projectsService.addFeaturesToProjects(this.selectedProjectsNames, [this.featureName]);
+    this.projectsService.editFeature(this.devHours, this.selectedProjectsNames, [this.featureName]);
+    // this.projectsService.addFeaturesToProjects(this.selectedProjectsNames, [this.featureName]);
     this.closeModal();
   }
 

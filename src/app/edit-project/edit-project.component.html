@@ -85,7 +85,7 @@
 
   <ion-item style="margin-bottom: 50px;">
     <ion-label>Add Features</ion-label>
-    <ion-select (ionChange)="addFeature($event)" multiple="true" cancelText="Cancel" okText="Add">
+    <ion-select #featuresSelect (ionChange)="addFeature($event)" multiple="true" cancelText="Cancel" okText="Add">
       <ion-select-option *ngFor="let feature of projectsService.featuresList" value="{{feature.name}}">{{feature.name}}
       </ion-select-option>
     </ion-select>

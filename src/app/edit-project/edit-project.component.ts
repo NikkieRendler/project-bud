@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { ModalController, IonSelect, IonSelectOption } from '@ionic/angular';
 import { ProjectsService, Project } from '../services/projects.service';
 import { HourlyRateService } from '../services/hourly-rate.service';
 
@@ -9,6 +9,7 @@ import { HourlyRateService } from '../services/hourly-rate.service';
   styleUrls: ['./edit-project.component.scss'],
 })
 export class EditProjectComponent implements OnInit {
+  @ViewChildren('featuresSelect') featuresSelect: QueryList<IonSelect>;
   @Input() projectName: string;
   selectedFeaturesNames: string[] = [];
   project: Project;
@@ -32,7 +33,8 @@ export class EditProjectComponent implements OnInit {
     await this.modalController.dismiss();
   }
 
-  addFeature(event) {
+  addFeature(event: CustomEvent) {
+    console.log(this.featuresSelect);
     this.selectedFeaturesNames = event.detail.value;
     this.projectsService.addFeaturesToProjects([this.projectName], this.selectedFeaturesNames);
     this.calculateProjectTotalCost();

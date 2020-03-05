@@ -16,7 +16,7 @@ export class AddFeatureComponent implements OnInit {
   featureName: string;
 
   ngOnInit() {
-    this.projectsService.getFeatures()
+    this.projectsService.getFeatures();
   }
 
   async closeModal() {
